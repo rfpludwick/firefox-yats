@@ -42,5 +42,12 @@
   "options_ui": {
     "page": "assets/html/options.html",
     "browser_style": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "data_collection_permissions": {
+        "required": ["browsingActivity"]
+      }
+    }
   }
 }

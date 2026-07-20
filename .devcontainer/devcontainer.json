@@ -19,7 +19,8 @@
 		"davidanson.vscode-markdownlint",
 		"redhat.vscode-yaml",
 		"ms-azuretools.vscode-docker",
-		"mrmlnc.vscode-json5"
+		"mrmlnc.vscode-json5",
+		"anthropic.claude-code"
 	],
 	"mounts": [
 		"source=${localEnv:HOME}/.kube,target=/home/vscode/.kube,type=bind,consistency=cached",
