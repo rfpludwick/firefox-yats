@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>YATS</title>
+  <link rel="stylesheet" href="../css/overlay.css" />
+</head>
+<body>
+  <div class="spotlight" role="dialog" aria-label="Switch tab" aria-modal="true">
+    <div class="spotlight-body">
+      <div class="main-pane">
+        <div class="search-row">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="query"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search open tabs"
+            aria-autocomplete="list"
+            aria-controls="results"
+            aria-activedescendant=""
+          />
+        </div>
+        <ul id="results" class="results" role="listbox" aria-label="Matching results"></ul>
+        <div id="empty" class="empty" hidden>No matching results</div>
+      </div>
+      <aside id="settings-panel" class="settings-panel" hidden aria-label="Settings">
+        <h2 class="settings-title">Settings</h2>
+        <section class="settings-section" aria-label="Search sources">
+          <h3 class="settings-heading">Search</h3>
+          <label class="toggle toggle-block">
+            <input type="checkbox" id="toggle-open" checked />
+            <span class="toggle-track" aria-hidden="true"></span>
+            <span class="toggle-label">Open tabs</span>
+          </label>
+          <label class="toggle toggle-block">
+            <input type="checkbox" id="toggle-closed" />
+            <span class="toggle-track" aria-hidden="true"></span>
+            <span class="toggle-label">Closed tabs</span>
+          </label>
+          <label class="toggle toggle-block">
+            <input type="checkbox" id="toggle-history" />
+            <span class="toggle-track" aria-hidden="true"></span>
+            <span class="toggle-label">History</span>
+          </label>
+        </section>
+        <section class="settings-section" aria-label="Tab behavior">
+          <h3 class="settings-heading">Behavior</h3>
+          <label class="toggle toggle-block">
+            <input type="checkbox" id="toggle-last-open" checked />
+            <span class="toggle-track" aria-hidden="true"></span>
+            <span class="toggle-label">Focus last-open tab when closing active tab</span>
+          </label>
+        </section>
+      </aside>
+    </div>
+    <footer class="bottom-bar">
+      <div class="hint">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> open</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+      <button
+        id="settings-toggle"
+        type="button"
+        class="gear-btn"
+        aria-label="Settings"
+        aria-expanded="false"
+        aria-controls="settings-panel"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.488.488 0 0 0 14 2h-3.84c-.24 0-.46.17-.5.41l-.36 2.54c-.59.24-1.13.57-1.63.94l-2.39-.96a.488.488 0 0 0-.59.22L2.74 8.87a.49.49 0 0 0 .12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.04.71 1.63.94l.36 2.54c.05.24.27.41.5.41H14c.24 0 .46-.17.5-.41l.36-2.54c.59-.24 1.13-.56 1.63-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.03-1.58zM12 15.6A3.6 3.6 0 1 1 15.6 12 3.6 3.6 0 0 1 12 15.6z"/>
+        </svg>
+      </button>
+    </footer>
+  </div>
+  <script type="module" src="../../src/overlay.js"></script>
+</body>
+</html>

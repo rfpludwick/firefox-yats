@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Light background -->
+  <rect width="128" height="128" rx="28" fill="#ffffff"/>
+  <rect x="3" y="3" width="122" height="122" rx="25" fill="none" stroke="#d0dae8" stroke-width="6"/>
+
+  <!-- Oversized magnifying glass for small-size legibility -->
+  <circle cx="48" cy="58" r="26" fill="none" stroke="#0066e6" stroke-width="12"/>
+  <line x1="68" y1="78" x2="92" y2="102" stroke="#0066e6" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Compact result marks (read as list lines next to search) -->
+  <rect x="86" y="28" width="26" height="10" rx="5" fill="#1a2b44"/>
+  <rect x="86" y="44" width="18" height="10" rx="5" fill="#5a6e8a"/>
+</svg>

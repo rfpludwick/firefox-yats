@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "YATS",
+  "version": "1.0.0",
+  "description": "Yet Another Tab System — fuzzy finder for open tabs, closed tabs, and history.",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "sessions",
+    "history",
+    "storage"
+  ],
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "96": "assets/icons/icon-96.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "browser_action": {
+    "default_title": "YATS",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png"
+    }
+  },
+  "background": {
+    "scripts": ["src/background.js"],
+    "persistent": false,
+    "type": "module"
+  },
+  "commands": {
+    "yats": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space",
+        "mac": "MacCtrl+Shift+Space"
+      },
+      "description": "YATS"
+    }
+  },
+  "options_ui": {
+    "page": "assets/html/options.html",
+    "browser_style": true
+  }
+}

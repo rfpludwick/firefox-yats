@@ -1,0 +1,33 @@
+{
+	"image": "${localEnv:RFPLUDWICK_NEXUS_HOSTNAME}/vscode/base:latest",
+	"features": {
+		"docker-from-docker": {
+			"version": "latest",
+			"moby": true
+		}
+	},
+	"runArgs": [
+		"--init"
+	],
+	"postCreateCommand": "bash .devcontainer/provision.sh",
+	"initializeCommand": "bash .devcontainer/initialize.sh",
+	"extensions": [
+		"oderwat.indent-rainbow",
+		"streetsidesoftware.code-spell-checker",
+		"github.vscode-pull-request-github",
+		"timonwong.shellcheck",
+		"davidanson.vscode-markdownlint",
+		"redhat.vscode-yaml",
+		"ms-azuretools.vscode-docker",
+		"mrmlnc.vscode-json5"
+	],
+	"mounts": [
+		"source=${localEnv:HOME}/.kube,target=/home/vscode/.kube,type=bind,consistency=cached",
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=/tmp/vscode-devcontainer,target=/tmp/vscode-devcontainer,type=bind"
+	],
+	"remoteEnv": {
+		"VAULT_ADDR": "${localEnv:VAULT_ADDR}",
+		"VAULT_GITHUB_TOKEN": "${localEnv:VAULT_GITHUB_TOKEN}"
+	}
+}
