@@ -16,7 +16,7 @@ import {
   subtitleFor,
 } from "./lib/entries.js";
 import { highlight } from "./lib/html-utils.js";
-import { resultsListHtml } from "./lib/render.js";
+import { resultsListFragment } from "./lib/render.js";
 import { filterEntries, urlTextFor } from "./lib/scoring.js";
 import {
   clampSelectionIndex,
@@ -106,14 +106,14 @@ function renderResults() {
   updateEmptyMessage(query);
 
   if (!matches.length) {
-    resultsEl.innerHTML = "";
+    resultsEl.replaceChildren();
     emptyEl.hidden = false;
     queryEl.setAttribute("aria-activedescendant", "");
     return;
   }
 
   emptyEl.hidden = true;
-  resultsEl.innerHTML = resultsListHtml(matches, renderHelpers);
+  resultsEl.replaceChildren(resultsListFragment(matches, renderHelpers));
   updateSelection();
 }
 

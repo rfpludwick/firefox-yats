@@ -65,8 +65,10 @@ day-to-day development. Reload the temporary add-on after editing source files.
 
 Run `npm run build` to produce a minified package in `dist/`. The build rewrites
 `dist/manifest.json` and the overlay script tag for bundled scripts. Load
-`dist/manifest.json` to test the production bundle or package `dist/` as an
-`.xpi`.
+`dist/manifest.json` to test the production bundle.
+
+Run `npm run package` to build and zip `dist/` into `<name>-<version>.zip` at
+the repo root — ready to upload to AMO or install as a temporary `.xpi`.
 
 ## Development
 
@@ -80,12 +82,14 @@ Run `npm run build` to produce a minified package in `dist/`. The build rewrites
 | `dist/` | **Built extension package** — minified JS/CSS/HTML, copied icons, and `manifest.json` |
 | `tests/` | Vitest unit tests |
 | `scripts/build.mjs` | Production build pipeline |
+| `scripts/package.mjs` | Zips `dist/` for AMO submission or self-distribution |
 
 ### Commands
 
 | Command | Description |
 | --------- | ------------- |
 | `npm run build` | Minify and assemble the full extension into `dist/` |
+| `npm run package` | Build, then zip `dist/` into `<name>-<version>.zip` |
 | `npm test` | Run unit tests (Vitest) |
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run lint` | ESLint over `src/`, `tests/`, and `scripts/` |
@@ -219,8 +223,9 @@ the case where Firefox auto-selects a neighbor tab on close.
   allowlist.
 - **Sender validation** — Background rejects messages not from this extension’s
   pages.
-- **HTML escaping** — Titles, URLs, and favicon attributes are escaped before
-  `innerHTML`; result row IDs are index-based (`result-0`), not derived from URLs.
+- **No `innerHTML`** — Result rows are built as DOM nodes (`src/lib/render.js`)
+  with `textContent`/property assignment, never HTML strings; result row IDs
+  are index-based (`result-0`), not derived from URLs.
 - **Favicons** — Only `http:`/`https:` favicon URLs are loaded; failures fall back
   to a letter avatar.
 

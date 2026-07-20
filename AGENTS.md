@@ -14,6 +14,7 @@ fuzzy tab switcher. See [README.md](README.md) for full architecture and usage.
 | `manifest.json` | **Dev manifest** — load directly in Firefox (ES module background, unbundled `src/`) |
 | `tests/` | Vitest unit tests for `src/lib/` |
 | `scripts/build.mjs` | esbuild + minify pipeline |
+| `scripts/package.mjs` | zips `dist/` for AMO submission or self-distribution |
 
 ## Commands
 
@@ -24,6 +25,7 @@ npm run check                     # lint + test + build (preferred before finish
 npm test                          # Vitest
 npm run lint                      # ESLint
 npm run build                     # write minified extension to dist/
+npm run package                   # build, then zip dist/ into <name>-<version>.zip
 npx markdownlint-cli2 "**/*.md"   # when Markdown files changed
 ```
 
@@ -54,9 +56,10 @@ via `.markdownlint-cli2.jsonc`. When you add or edit Markdown, run
   tests when behavior changes.
 - **Edit sources, not `dist/`** — `dist/` is generated; only `npm run build` writes
   it.
-- **Security** — keep HTTP(S)-only URL checks (`isHttpUrl`), HTML escaping for
-  `innerHTML`, extension-sender validation on background messages, and index-based
-  DOM ids (not URL-derived).
+- **Security** — keep HTTP(S)-only URL checks (`isHttpUrl`), DOM-node result
+  rendering (no `innerHTML`/HTML-string building — `src/lib/render.js` builds
+  elements directly), extension-sender validation on background messages, and
+  index-based DOM ids (not URL-derived).
 - **Performance** — prefer `updateSelection()` over full re-render when only
   highlight changes; respect existing caps (e.g. 50 visible results, MRU depth).
 - **Commits** — do not commit unless the user asks.

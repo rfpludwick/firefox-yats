@@ -6,6 +6,7 @@
   "description": "YATS (Yet Another Tab System) — Firefox extension fuzzy tab switcher",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "package": "npm run build && node scripts/package.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
@@ -19,6 +20,7 @@
     "eslint": "^9.28.0",
     "globals": "^16.2.0",
     "html-minifier-terser": "^7.2.0",
+    "jsdom": "^29.1.1",
     "vitest": "^3.2.4"
   }
 }
